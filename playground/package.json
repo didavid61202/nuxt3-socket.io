@@ -1,4 +1,8 @@
 {
   "private": true,
-  "name": "my-module-playground"
+  "name": "my-module-playground",
+  "scripts": {
+    "build": "pnpx nuxi build",
+    "start": "node ./.output/server/index.mjs"
+  }
 }
