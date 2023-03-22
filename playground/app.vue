@@ -11,6 +11,7 @@ const to = ref()
 
 const sendMessage = ()=>{
     socket.emit('message',{msg:msg.value, to:to.value})
+    msg.value = ''
 }
 
 const messages = ref<string[]>([])
@@ -37,7 +38,7 @@ onMounted(() => {
   <div>
     <div>Connected: {{ connected }}</div>
     <div>ID: {{ socketId }}</div>
-    <input v-model="msg" type="text" name="message" id="messgae" placeholder="message">
+    <input v-model="msg" type="text" name="message" id="messgae" placeholder="message" @keyup.enter="sendMessage">
     <input v-model="to" type="text" name="to" id="to" placeholder="to">
 <button @click="sendMessage">Send Message</button>
 <ul>
