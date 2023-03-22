@@ -23,6 +23,7 @@ dist
 .build-*
 .env
 .netlify
+dev-storage-db
 
 # Env
 .env
