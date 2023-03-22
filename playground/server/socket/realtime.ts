@@ -1,12 +1,10 @@
 import { defineIOHandler } from '../../../src/module'
 import { createStorage } from 'unstorage'
-import fsDriver from "unstorage/drivers/fs";
+import redisDriver from "unstorage/drivers/redis";
 
 export default defineIOHandler(async (io) => {
-    // check if is production
-    // if () {
     const storage = createStorage(process.env.NODE_ENV === 'production' ? undefined : {
-        driver: fsDriver({ base:'./dev-storage-db' }),
+        driver: redisDriver({ url: process.env.REDIS_URL }),
     })
 
     const rtio = io.of('/realtime')
