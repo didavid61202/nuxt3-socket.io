@@ -3,8 +3,8 @@ import { createStorage } from 'unstorage'
 import redisDriver from "unstorage/drivers/redis";
 
 export default defineIOHandler(async (io) => {
-    const storage = createStorage(process.env.NODE_ENV === 'production' ? undefined : {
-        driver: redisDriver({ url: process.env.REDIS_URL }),
+    const storage = createStorage( {
+        driver: redisDriver({ url: process.env.REDIS_URL })
     })
 
     const rtio = io.of('/realtime')
