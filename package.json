@@ -22,7 +22,7 @@
     "dev:prepare": "nuxt-module-build --stub && nuxi prepare playground",
     "prepublishOnly": "pnpm prepack",
     "release": "bumpp && npm publish",
-    "build": "cd playground && nuxi build",
+    "build": "nuxi build playground",
     "start": "node ./playground/.output/server/index.mjs"
   },
   "dependencies": {
