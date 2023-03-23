@@ -3,7 +3,7 @@ import MyModule from '..'
 
 export default defineNuxtConfig({
   runtimeConfig: {
-    REDIS_URL:  process.env.REDIS_URL
+    REDIS_URL: process.env.REDIS_URL
   },
   modules: [
     MyModule

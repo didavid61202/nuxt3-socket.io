@@ -9,14 +9,12 @@ const socketId = ref()
 const msg = ref()
 const to = ref()
 
-const sendMessage = ()=>{
-    socket.emit('message',{msg:msg.value, to:to.value})
-    msg.value = ''
+const sendMessage = () => {
+  socket.emit('message', { msg: msg.value, to: to.value })
+  msg.value = ''
 }
 
 const messages = ref<string[]>([])
-
-
 
 onMounted(() => {
   socket.on('connect', () => {
@@ -28,9 +26,9 @@ onMounted(() => {
     connected.value = socket.connected
   })
 
-  socket.on('newMessage',(newMessage:string) =>{
-  messages.value.push(newMessage)
-})
+  socket.on('newMessage', (newMessage:string) => {
+    messages.value.push(newMessage)
+  })
 })
 </script>
 
@@ -38,13 +36,22 @@ onMounted(() => {
   <div>
     <div>Connected: {{ connected }}</div>
     <div>ID: {{ socketId }}</div>
-    <input v-model="msg" type="text" name="message" id="messgae" placeholder="message" @keyup.enter="sendMessage">
-    <input v-model="to" type="text" name="to" id="to" placeholder="to">
-<button @click="sendMessage">Send Message</button>
-<ul>
-  <li v-for="message in messages" :key="message">
-  {{message}}
-  </li>
-</ul>
+    <input
+      id="messgae"
+      v-model="msg"
+      type="text"
+      name="message"
+      placeholder="message"
+      @keyup.enter="sendMessage"
+    >
+    <input id="to" v-model="to" type="text" name="to" placeholder="to">
+    <button @click="sendMessage">
+      Send Message
+    </button>
+    <ul>
+      <li v-for="message in messages" :key="message">
+        {{ message }}
+      </li>
+    </ul>
   </div>
 </template>
