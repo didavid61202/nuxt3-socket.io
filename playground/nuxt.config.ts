@@ -8,7 +8,13 @@ export default defineNuxtConfig({
   modules: [
     MyModule
   ],
-  myModule: {
-    addPlugin: true
+  socket: {
+    addPlugin: true,
+    serverOptions: {
+      cors: {
+        origin: ['http://localhost:3000/', 'https://admin.socket.io', process.env.RAILWAY_HOST_URL],
+        credentials: true
+      }
+    }
   }
 })

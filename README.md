@@ -4,6 +4,11 @@ Just another [socket.io](https://socket.io/) module for Nuxt 3.
 
 This module uses the Vite server in development and `req.socket.server` in production.
 
+# Socket IO Admin Panel
+
+Setup Socket.io Admin UI at https://admin.socket.io/
+with basic auth using username and password set in .env
+
 ## Install
 
 ```bash
